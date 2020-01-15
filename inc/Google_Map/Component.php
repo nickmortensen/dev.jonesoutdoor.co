@@ -33,7 +33,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *
 	 * @var {string} $apikey
 	 */
-	public $apikey = 'AIzaSyAYs5aPmS5UYfplQcivzOL9cpuoiCeJa9k';
+	public $apikey = '';
 
 	/**
 	 * Gets the unique identifier for the theme component.

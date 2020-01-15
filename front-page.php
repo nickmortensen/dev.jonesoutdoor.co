@@ -16,12 +16,7 @@ $form = 'template-parts/frontpage/contact-form';
 ?>
 <section id="cformheader" class="w-screen bg-red-200 h-16">
 	<h2 class=" p-4 mx-auto text-2xl">
-	<?php
-$test = "Beavis \"the man\" o'brien";
-echo "\r\r";
-echo htmlentities($test, ENT_QUOTES);
-echo "\r\r";
-?>
+
 
 	</h2>
 </section>

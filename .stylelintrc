@@ -1,6 +1,12 @@
 {
 	"extends": "/usr/local/lib/node_modules/stylelint-config-wordpress",
-		"rules": {
+	"ignoreFiles": {
+		[
+			"**/tailwind.css",
+			"**/_tailwind.css"
+		]
+	},
+	"rules": {
 		"at-rule-no-unknown": [
 			true,
 			{
@@ -20,7 +26,9 @@
 			}
 		],
 		"at-rule-empty-line-before": [
-			"always"
+			"always", {
+				"except": [ "first-nested" ]
+			}
 		],
 		"rule-empty-line-before": [
 			"always",

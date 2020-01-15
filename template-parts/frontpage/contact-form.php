@@ -1,5 +1,5 @@
 <?php
-// phpcs:disable Generic.PHP.DisallowShortOpenTag.EchoFound, WordPress.Security.EscapeOutput.OutputNotEscaped, WordPress.Security.NonceVerification.Missing, Generic.PHP.DisallowShortOpenTag.EchoFound
+// phpcs:disable Squiz.PHP.CommentedOutCode.Found, Generic.PHP.DisallowShortOpenTag.EchoFound, WordPress.Security.EscapeOutput.OutputNotEscaped, WordPress.Security.NonceVerification.Missing, Generic.PHP.DisallowShortOpenTag.EchoFound
 /**
  * Template part for displaying Jones Outdoor Contact Form -- this is the one with the blurred background.
  *
@@ -30,11 +30,11 @@ if ( isset( $_POST['submit'] ) ) {
 	// $from_email   = filter_input( INPUT_POST, 'email', FILTER_VALIDATE_EMAIL );
 	// Checks for Valid email format and nothing else.
 	// if ( $form_email ) {
-	// 	$headers    = [];
-	// 	$headers[]  = "From: wordpress@jonesoutdoor.co\r\nReply-to: $from_email";
-	// 	$headers[]  = 'Cc: incoming_testmail_two@jonesoutdoor.co';
-	// 	$headers[]  = 'Content-type: text/plain; charset = utf-8';
-	// 	$authorized = null;
+	// $headers    = [];
+	// $headers[]  = "From: wordpress@jonesoutdoor.co\r\nReply-to: $from_email";
+	// $headers[]  = 'Cc: incoming_testmail_two@jonesoutdoor.co';
+	// $headers[]  = 'Content-type: text/plain; charset = utf-8';
+	// $authorized = null;
 	// }
 
 ?>
@@ -87,7 +87,7 @@ if ( isset( $_POST['submit'] ) ) {
 		What is Your Full Name?
 		<?php
 			if ( $missing && in_array( 'fullname', $missing, true ) ) {
-				echo wp_rig()->issue_warning($fields['fullname']['error']);
+				echo wp_rig()->issue_warning( $fields['fullname']['error'] );
 			}
 		?>
 	</label><!-- end label for fullname input -->

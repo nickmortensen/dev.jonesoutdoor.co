@@ -73,8 +73,9 @@ const stylelintrules = {
 				ignore: ["after-comment", "stylelint-commands"]
 			}
 		],
-		"at-rule-empty-line-before": [
-			"always"
+		"at-rule-empty-line-before": [ "always", {
+				"except": [ "first-nested" ]
+			 }
 		],
 		"rule-empty-line-before": [
 			"always",
