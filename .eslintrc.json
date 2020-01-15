@@ -1,0 +1,38 @@
+{
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+        "plugin:@wordpress/eslint-plugin/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+      "accessor-pairs": "off",
+      "array-callback-return": ["error", { "allowImplicit": true }],
+      "arrow-parens": ["error", "as-needed"],
+      "block-scoped-var": "error",
+      "comma-dangle": [ "error", { "arrays" : "always-multiline", "objects": "always-multiline" } ],
+      "indent": [ "error", "tab" ],
+      "max-len":["error", { "code": 180, "ignoreTrailingComments": true, "ignoreUrls": true, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true }],
+      "no-console": 0,
+      "no-multi-spaces": "off",
+      "no-unused-vars": 1,
+      "no-use-before-define": ["error", { "functions": false, "variables": false } ],
+      "no-useless-escape":"off",
+      "object-curly-newline": ["error", { "multiline": true }],
+      "semi": 1,
+      "space-in-parens": ["error", "always", { "exceptions": ["{}", "[]"] }],
+      "template-curly-spacing": ["error", "never"],
+      "valid-jsdoc": 0,
+      "yoda": ["error", "never", { "onlyEquality": true }]
+    }
+}

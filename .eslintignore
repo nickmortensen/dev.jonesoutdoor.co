@@ -1,0 +1,10 @@
+/assets/js/libs/**
+/node_modules/**
+/vendor/**
+/config/**
+/assets/js/src/lazyload.js
+/assets/js/src/customizer.js
+/assets/js/src/navigation.js
+
+# Because parsing error: 'import' and 'export' may appear only with 'sourceType: module'
+/gulpfile.babel.js
