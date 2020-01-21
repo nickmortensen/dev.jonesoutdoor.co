@@ -5,7 +5,7 @@
  * External dependencies
  */
 import { src, dest } from 'gulp';
-import tailwindcss from 'tailwindcss';
+// import tailwindcss from 'tailwindcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import AtImport from 'postcss-import';
 import pump from 'pump';
@@ -52,6 +52,7 @@ export function stylesBeforeReplacementStream() {
 const stylelintrules = {
 	extends: "/usr/local/lib/node_modules/stylelint-config-wordpress",
 	ignoreFiles: [
+		`${rootPath}/assets/css/*.min.css`,
 		`${rootPath}/assets/css/src/tailwind/tailwind.css`,
 		`${rootPath}/assets/css/src/tailwind/source/_tailwind.css`
 	],
@@ -61,7 +62,8 @@ const stylelintrules = {
 			{
 				ignoreAtRules: [
 				"custom-media",
-				"/^custom/"
+				"/^custom/",
+				"tailwind"
 			]
 			}
 		],
@@ -70,17 +72,19 @@ const stylelintrules = {
 		"comment-empty-line-before": [
 			"always",
 			{
+				except: [ 'first-nested' ],
 				ignore: ["after-comment", "stylelint-commands"]
 			}
 		],
 		"at-rule-empty-line-before": [ "always", {
-				"except": [ "first-nested" ]
-			 }
+				except: [ "after-same-name", "inside-block", "blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested" ],
+				ignore: ["after-comment", "first-nested" ]
+			}
 		],
 		"rule-empty-line-before": [
 			"always",
 			{
-				"ignore": ["after-comment","first-nested", "inside-block"]
+				ignore: ["after-comment","first-nested", "inside-block"]
 			}
 		],
 		"value-list-comma-newline-after": "always-multi-line",
@@ -131,7 +135,6 @@ export function stylesAfterReplacementStream() {
 		calc( {
 			preserve: false,
 		} ),
-		tailwindcss(`${rootPath}/gulp/tailwind.js`),
 		cssnano(),
 	];
 

@@ -18,6 +18,10 @@ namespace WP_Rig\WP_Rig;
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<div class="w-screen bg-blue-800 p-8">
+	<?php get_template_part( 'template-parts/footer/searchform' ); ?>
+</div>
+
 <?php wp_footer(); ?>
 
 </body>

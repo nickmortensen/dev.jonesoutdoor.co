@@ -27,3 +27,29 @@ a:hover,
 a:active {
 	outline: 0;
 }
+
+
+#primary-menu {
+	--link-color: var(--color-theme-white);
+	--link-hover: var(--color-theme-yellow);
+
+	& a {
+		color: var(--link-color);
+		transition: color 0.5s var(--transition-timing-function);
+
+		&:hover {
+			text-decoration: none;
+			color: var(--link-hover);
+		}
+
+		&:active {
+			text-decoration: none;
+			color: var(--link-hover);
+			text-shadow: 1px 1px 1px var(--color-theme-grey);
+		}
+	}
+
+	& .sub-menu {
+		background: var(--gray);
+	}
+}

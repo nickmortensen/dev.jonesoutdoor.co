@@ -154,6 +154,7 @@ class Theme {
 			new Styles\Component(),
 			new Google_Map\Component(),
 			new Contact_Form\Component(),
+			new Frontpage\Component(),
 		];
 
 		if ( defined( 'JETPACK__VERSION' ) ) {

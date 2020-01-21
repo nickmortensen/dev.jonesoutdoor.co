@@ -81,6 +81,8 @@
   "stylelint-config-prettier": "^5.3.0",
   "stylelint-config-wordpress": "^14.0.0",
   "tailwindcss": "^1.1.4",
+  "tailwindcss-grid": "^1.2.1",
+  "tailwindcss-object-fit": "^1.0.1",
   "vinyl": "^2.2.0"
  },
  "babel": {
@@ -153,32 +155,31 @@
     {
      "ignoreAtRules": [
       "custom-media",
-      "/^custom/"
-     ]
+      "/^custom/",
+      "tailwind"
+    ]
     }
    ],
    "no-descending-specificity": null,
    "no-duplicate-selectors": null,
    "comment-empty-line-before": [
-    "always",
-    {
-     "ignore": [
-      "after-comment",
-      "stylelint-commands"
-     ]
-    }
+      "always",
+      {
+        "except": [ "first-nested" ],
+        "ignore": [ "after-comment", "stylelint-commands" ]
+      }
    ],
    "at-rule-empty-line-before": [
-    "always"
+    "always",
+    {
+      "except": ["after-same-name", "inside-block", "blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested"],
+      "ignore": ["after-comment", "first-nested" ]
+    }
    ],
    "rule-empty-line-before": [
     "always",
     {
-     "ignore": [
-      "after-comment",
-      "first-nested",
-      "inside-block"
-     ]
+     "ignore": [ "after-comment", "first-nested", "inside-block" ]
     }
    ],
    "value-list-comma-newline-after": "always-multi-line",

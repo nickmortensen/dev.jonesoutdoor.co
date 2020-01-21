@@ -1,6 +1,9 @@
 **/*.min.css
 assets/*.min.css
 assets/**/*.min.css
+**/*.min.css
+assets/css/*.min.css
+assets/css/global.min.css
 assets/css/src/tailwind/*.css
 assets/css/src/tailwind/tailwind.css
 assets/css/src/tailwind/**/*.css

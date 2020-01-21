@@ -259,3 +259,20 @@ function islastFocusableElement( container, element, focusSelector ) {
 	}
 	return false;
 }
+
+
+const menuToggle = document.getElementById( 'menu-toggler' );
+
+
+
+function buttonText( event ) {
+	let menu = 'menu';
+	let currentText = event.target.textContent.toLowerCase();
+	let open = '_open';
+	let newText = currentText === menu+open ? 'menu' : 'menu_open'
+	event.target.textContent = newText;
+
+
+
+};
+menuToggle.addEventListener( 'click', buttonText, false );

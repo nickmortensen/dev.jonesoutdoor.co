@@ -163,7 +163,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function get_contact_form_frontpage_script() {
 		$handle       = 'frontpage-contact-form-tailwind';
 		$src          = get_theme_file_uri( '/assets/js/src/frontpage_contact_form.js' );
-		$version      = 'development' === ENVIRONMENT ? wp_rig()->seconds_from_epoch() : '20200102'; // check to see whether this is the development or production version by seeing how the ENVIRONMENT constant on wp-config.php is set.
+		$path         = get_theme_file_path( '/assets/js/src/frontpage_contact_form.js' );
+		$version      = 'development' === ENVIRONMENT ? wp_rig()->get_asset_version( $path ) : '20200102'; // check to see whether this is the development or production version by seeing how the ENVIRONMENT constant on wp-config.php is set.
 		$dependencies = array();
 		$in_footer    = true;
 		// Only get this javascript if it is the frontpage -- can and maybe should alter this to beging is_home() as well.

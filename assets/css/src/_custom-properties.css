@@ -8,35 +8,50 @@
 :root {
 	--global-font-color: #333;
 	--global-font-family: "Roboto", serif;
-	--global-font-size: 20;
+	--global-font-size: 14;
 	--global-font-line-height: 1.4;
 	--highlight-font-family: -apple-system, system-ui, blinkmacsystemfont, "Noto Sans", sans-serif;
 	--content-width: 45rem;
 	--dropdown-symbol-width: 0.7em;
 
 	/* Custom editor colors */
-	--color-theme-primary: #e36d60;
+	--color-theme-primary: #ff6500;
 	--color-theme-secondary: #41848f;
-	--color-theme-red: #c0392b;
+	--color-theme-red: #ff4d6b;
 	--color-theme-green: #27ae60;
-	--color-theme-blue: #2980b9;
-	--color-theme-yellow: #f1c40f;
+	--color-theme-blue: #0273b9;
+	--color-theme-yellow: #fc6;
 	--color-theme-black: #1c2833;
 	--color-theme-grey: #95a5a6;
 	--color-theme-white: #ecf0f1;
 	--color-custom-daylight: #97c0b7;
 	--color-custom-sun: #eee9d1;
+	--darker-background: #285078;
+	--gray: #515153;
 
 	--color-link: #0073aa;
 	--color-link-visited: #333;
 	--color-link-active: #00a0d2;
 
-	--color-quote-border: #000;
+	--color-quote-border: var(--gray);
 	--color-quote-citation: #6c7781;
 
+	--lightest: var(--color-theme-white);
+	--incorrect: var(----color-theme-red);
+	--greyed-out: var(--color-theme-grey:);
+	--yellow: var(--color-theme-yellow);
+	--focus-background: var(--color-theme-primary);
+	--regular-background: var(--color-theme-blue);
+	--font-heavy: 700;
+	--font-normal: 600;
+	--font-light: 400;
+	--font-stack: var(--highlight-font-family);
+	--dark-text-shadow: 2px 2px 2px var(--gray);
+	--transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
 	/* Custom editor font sizes */
-	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
-	--font-size-regular: calc(var(--global-font-size) / 16 * 1rem);
+	--font-size-small: 8px;
+	--font-size-regular: calc(18 / var(--global-font-size) * 1rem);
 	--font-size-large: calc(36 / var(--global-font-size) * 1rem);
 	--font-size-larger: calc(48 / var(--global-font-size) * 1rem);
 }

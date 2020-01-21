@@ -27,13 +27,16 @@ use function wp_localize_script;
  */
 class Component implements Component_Interface, Templating_Component_Interface {
 
+
 	/**
 	 * The Google maps api Key.
 	 * NOTE: In the interest of not having the key all over github, I've saved it as a constant in the wp-config.php file.
 	 *
-	 * @var {string} $apikey
+	 * @return string Google API Key for MAPS and FORMS.
 	 */
-	public $apikey = '';
+	public function get_google_apikey() : string {
+		return GOOGLE_MAPS_API;
+	}
 
 	/**
 	 * Gets the unique identifier for the theme component.
@@ -48,7 +51,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
 	public function initialize() {
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_google_map_javascript' ] );
+		// add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_google_map_javascript' ] );
 	}
 
 	/**
@@ -77,22 +80,26 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// $locations        = get_theme_file_uri( '/assets/js/google_map_locations.min.js' );
 		// $map_core         = get_theme_file_uri( '/assets/js/google_map_core.min.js' );
 		// $uri_array        = [ $map_styles, $locations, $map_core ];
-		$dependency_array = [ 'google-map-style', 'google-map-locations', 'google-map-core' ];
 		// $javascripts      = array_combine( $dependency_array, $uri_array );
-		// foreach ( $javascripts as $handle => $uri ) {
-		// wp_register_script( $handle, $uri, array(), '20191223', false );
-		// }
-		wp_register_script( 'google-map-style', get_theme_file_uri( '/assets/js/google_map_style.min.js' ), array(), '20190916', false );
-		wp_register_script( 'google-map-locations', get_theme_file_uri( '/assets/js/google_map_locations.min.js' ), array(), '20190916', false );
-		wp_register_script( 'google-map-core', get_theme_file_uri( '/assets/js/google_map_core.min.js' ), array(), wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/google_map_core.min.js' ) ), false );
+		$dependency_array = [ 'google-map-style', 'google-map-locations', 'google-map-core' ];
+		foreach ( $dependency_array as $handle ) {
+			// $uri = get_theme_file_uri( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' );
+			// wp_register_script( $handle, $uri, array(), wp_rig()->get_asset_version( $uri ), false );
+			$uri = get_theme_file_uri( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' );
+			$ver = 'developement' === ENVIRONMENT ? wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' ) ) : '20200119';
+			wp_register_script( $handle, $uri, array(), $ver, false );
+		}
+		// wp_register_script( 'google-map-style', get_theme_file_uri( '/assets/js/google_map_style.min.js' ), array(), '20190916', false );
+		// wp_register_script( 'google-map-locations', get_theme_file_uri( '/assets/js/google_map_locations.min.js' ), array(), '20190916', false );
+		// wp_register_script( 'google-map-core', get_theme_file_uri( '/assets/js/google_map_core.min.js' ), array(), wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/google_map_core.min.js' ) ), false );
 		// phpcs:disable
-		wp_enqueue_script( 'google-map-api-call', 'https://maps.googleapis.com/maps/api/js?key=' . $this->apikey . '&callback=initMap', $dependency_array, null, true );
+		wp_enqueue_script( 'google-map-api-call', 'https://maps.googleapis.com/maps/api/js?key=' . $this->get_google_apikey() . '&callback=initMap', $dependency_array, null, true );
 		// phpcs:enable
 
 		// Now supply an array of data to a javascript file that was enqueued earlier in the function using the mapData object.
 		$data_to_pass = [
-			'apiKey' => $this->apikey,
-			'center' => [
+			'apiKey'           => $this->get_google_apikey(),
+			'center'           => [
 				'lat' => 44.529364,
 				'lng' => -88.117770,
 			],

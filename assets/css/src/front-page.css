@@ -99,13 +99,6 @@
 	transition: height 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0.9s ease;
 }
 
-/* Thank You Message at end of the form */
-h1 {
-	position: relative;
-	color: var(--lightest);
-	opacity: 0;
-	transition: all 0.8s ease-in-out;
-}
 
 /* progress div is also bg-color */
 #progress {

@@ -152,4 +152,4 @@ $quantity         = count( $header_gradients ) - 1;
 	</section><!-- end section#frontpage-header -->
 
 
-
+cd /Applications/"Visual Studio Code.app"/Contents/Resources/app/bin/code

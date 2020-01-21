@@ -23,22 +23,24 @@
 !.eslintignore
 !.eslintrc.json
 !.gitignore
+!.browserslistrc
 
 !/assets/
 /assets/*
 
+# do not allow any of the minified css files, but do allow the non-minified files
 !/assets/css/
 /assets/css/*
 
 !/assets/css/src/
 
+# do not allow any of the minified js files, but do allow the non-minified files
 !/assets/js/
 /assets/js/*
-
 !/assets/js/src/
 
+# do not allow any of the minified js files, but do allow the non-minified files
 !/assets/images/
-
 /assets/images/*
 !/assets/images/src/
 
@@ -69,4 +71,4 @@
 !readme.txt
 !screenshot.png
 !.travis.yml
-!.browserslistrc
+

@@ -13,18 +13,18 @@ if ( ! wp_rig()->is_primary_nav_menu_active() ) {
 
 ?>
 
-<nav id="site-navigation" class="main-navigation nav--toggle-sub nav--toggle-small" aria-label="<?php esc_attr_e( 'Main menu', 'wp-rig' ); ?>"
-	<?php
-	if ( wp_rig()->is_amp() ) {
-		?>
+
+
+
+<nav
+id="site-navigation"
+class="main-navigation nav--toggle-sub nav--toggle-small w-screen lg:w-2/3 xl:w-7/12"
+aria-label="<?php esc_attr_e( 'Main menu', 'wp-rig' ); ?>"
+	<?php if ( wp_rig()->is_amp() ) : ?>
 		[class]=" siteNavigationMenu.expanded ? 'main-navigation nav--toggle-sub nav--toggle-small nav--toggled-on' : 'main-navigation nav--toggle-sub nav--toggle-small' "
-		<?php
-	}
-	?>
+	<?php endif; ?>
 >
-	<?php
-	if ( wp_rig()->is_amp() ) {
-		?>
+		<?php if ( wp_rig()->is_amp() ) : ?>
 		<amp-state id="siteNavigationMenu">
 			<script type="application/json">
 				{
@@ -32,24 +32,31 @@ if ( ! wp_rig()->is_primary_nav_menu_active() ) {
 				}
 			</script>
 		</amp-state>
-		<?php
-	}
-	?>
+		<?php endif; ?>
 
-	<button class="menu-toggle" aria-label="<?php esc_attr_e( 'Open menu', 'wp-rig' ); ?>" aria-controls="primary-menu" aria-expanded="false"
-		<?php
-		if ( wp_rig()->is_amp() ) {
-			?>
+	<button
+	id="menu-toggler"
+	class="menu-toggle material-icons"
+	aria-label="<?php esc_attr_e( 'Open menu', 'wp-rig' ); ?>"
+	aria-controls="primary-menu"
+	aria-expanded="false"
+		<?php if ( wp_rig()->is_amp() ) : ?>
 			on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
 			[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
-			<?php
-		}
-		?>
+		<?php endif; ?>
 	>
-		<?php esc_html_e( 'Menu', 'wp-rig' ); ?>
+	<i class="material-icons">menu</i>
 	</button>
 
 	<div class="primary-menu-container">
-		<?php wp_rig()->display_primary_nav_menu( [ 'menu_id' => 'primary-menu' ] ); ?>
+		<?php
+		$args = [
+			'menu_id' => 'primary-menu',
+		];
+		wp_rig()->display_primary_nav_menu( $args );
+		?>
 	</div>
+
 </nav><!-- #site-navigation -->
+
+

@@ -9,17 +9,13 @@
 
 namespace WP_Rig\WP_Rig;
 
-get_header();
 
-$form = 'template-parts/frontpage/contact-form';
-
+$masthead = 'template-parts/frontpage/masthead';
+$form    = 'template-parts/frontpage/contact-form';
+get_header( 'frontpage' );
+get_template_part( $masthead );
 ?>
-<section id="cformheader" class="w-screen bg-red-200 h-16">
-	<h2 class=" p-4 mx-auto text-2xl">
 
-
-	</h2>
-</section>
 
 <section
 id="contact-form-holder"
