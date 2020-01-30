@@ -1,0 +1,36 @@
+@import "_custom-properties.css";
+
+:root {
+
+}
+
+.footer-widgets-area {
+
+	display: grid;
+	grid-template-columns: repeat(2, 1fr) 2fr;
+	grid-gap: 2rem;
+	padding: 3vmin;
+
+	& a {
+		--link-color: var(--color-theme-white);
+		--link-hover: var(--color-theme-yellow);
+		--link-visited: var(--color-link-visited);
+		--link-active: var(--color-link-active);
+		color: var(--link-color);
+
+		&:hover {
+			color: var(--link-hover);
+		}
+	}
+}
+
+.footer-widgets-area * {
+	min-width: 0;
+}
+
+.widget-title {
+	color: var(--color-theme-white);
+	padding-bottom: 0.5vmin;
+	border-bottom: 4px solid var(--yellow-600);
+}
+

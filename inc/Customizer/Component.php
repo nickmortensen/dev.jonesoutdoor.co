@@ -68,6 +68,22 @@ class Component implements Component_Interface {
 			);
 		}
 
+		$wp_customize->selective_refresh->add_partial(
+			'custom_logo',
+			array(
+				'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+				'render_callback' => 'wprig_customize_partial_site_logo',
+			)
+		);
+
+		$wp_customize->selective_refresh->add_partial(
+			'retina_logo',
+			array(
+				'selector'        => '.header-titles [class*=site-]:not(.site-description)',
+				'render_callback' => 'wprig_customize_partial_site_logo',
+			)
+		);
+
 		/**
 		 * Theme options.
 		 */

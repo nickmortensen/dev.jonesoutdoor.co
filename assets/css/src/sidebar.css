@@ -11,7 +11,7 @@
 	margin-right: auto;
 }
 
-@media (--content-query) {
+@media screen and ( min-width: 800px ) {
 
 	.primary-sidebar {
 		padding-left: 0;
@@ -20,9 +20,10 @@
 
 }
 
-@media (--sidebar-query) {
+@media screen and ( min-width: 1280px ) {
 
 	.primary-sidebar {
 		padding: 0;
 	}
+
 }

@@ -9,18 +9,22 @@
 
 namespace WP_Rig\WP_Rig;
 
-
 $masthead = 'template-parts/frontpage/masthead';
-$form    = 'template-parts/frontpage/contact-form';
+$form     = 'template-parts/frontpage/contact-form';
 get_header( 'frontpage' );
+
 get_template_part( $masthead );
+
 ?>
 
 
+
+
+
 <section
-id="contact-form-holder"
+id="contact-form"
 class="w-screen bg-blue-600 py-16 relative"
-style="background: url('/wp-content/uploads/2019/09/sample_bb_type-720x480.jpg') #0273b9; background-blend-mode: multiply;background-size: cover;"
+style="background: url('/wp-content/uploads/2019/09/sample_bb_type-720x480.jpg') #5741d9; background-blend-mode: multiply;background-size: cover;"
 >
 
 
@@ -29,6 +33,14 @@ get_template_part( $form );
 ?>
 </section>
 <?php
+
 echo wp_rig()->output_the_map_element();
 
 get_footer();
+?>
+
+
+<script type="text/javascript">
+
+
+</script>

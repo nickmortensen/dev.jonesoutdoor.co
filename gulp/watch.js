@@ -31,7 +31,7 @@ export default function watch() {
 	const config = getThemeConfig();
 
 	// Only code sniff PHP files if the debug setting is true
-	if ( config.dev.debug.phpcs ) {
+	if ( ! config.dev.debug.phpcs ) {
 		PHPwatcher.on( 'change', function( path ) {
 			return pump( [
 				src( path ),
@@ -43,7 +43,8 @@ export default function watch() {
 		} );
 	}
 
-	gulpWatch( backslashToForwardSlash( paths.styles.src[ 0 ] ), series( styles, editorStyles ) );
+	// gulpWatch( backslashToForwardSlash( paths.styles.src[ 0 ] ), series( styles, editorStyles ) );
+	gulpWatch( backslashToForwardSlash( paths.styles.src[ 0 ] ), styles );
 
 	gulpWatch( backslashToForwardSlash( paths.scripts.src[ 0 ] ), series( scripts, reload ) );
 

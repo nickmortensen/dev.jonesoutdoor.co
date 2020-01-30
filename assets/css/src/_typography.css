@@ -1,9 +1,6 @@
-@import "_custom-properties.css";
-
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
-/* stylelint-disable */
 body,
 button,
 input,
@@ -38,7 +35,6 @@ textarea {
 		font-size: 18px;
 	}
 }
-/* stylelint-enable */
 
 h1,
 h2,
@@ -100,7 +96,6 @@ address {
 	margin: 0 0 1.5em;
 }
 
-/* stylelint-disable */
 pre {
 	background: #eee;
 	font-family: "Courier 10 Pitch", Courier, monospace;
@@ -111,7 +106,6 @@ pre {
 	overflow: auto;
 	padding: 1.5em;
 }
-/* stylelint-enable */
 
 code,
 kbd,
@@ -136,3 +130,4 @@ ins {
 big {
 	font-size: 125%;
 }
+

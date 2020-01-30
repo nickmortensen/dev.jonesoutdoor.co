@@ -5,10 +5,7 @@
  * @link: https://drafts.csswg.org/mediaqueries-5/#custom-mq
  **/
 
-@custom-media --narrow-menu-query screen and (max-width:525px);
-
-@custom-media --wide-menu-query screen and (min-width: 525px);
-
-@custom-media --content-query screen and (min-width: 525px);
-
-@custom-media --sidebar-query screen and (min-width: 800px);
+@custom-media --narrow-menu-query screen and ( max-width: 525px );
+@custom-media --wide-menu-query screen and ( min-width: 526px );
+@custom-media --content-query screen and ( min-width: 800px );
+@custom-media --sidebar-query screen and ( min-width: 1280px );

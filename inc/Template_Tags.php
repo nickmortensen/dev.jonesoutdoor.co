@@ -78,7 +78,7 @@ class Template_Tags {
 			throw new BadMethodCallException(
 				sprintf(
 					/* translators: %s: template tag name */
-					__( 'The template tag %s does not exist.', 'wp-rig' ),
+					__( "\rThe template tag %s does not exist. \rCheck out the Theme.php file to make sure it is listed within the array of components.\r", 'wp-rig' ),
 					'wp_rig()->' . $method . '()'
 				)
 			);

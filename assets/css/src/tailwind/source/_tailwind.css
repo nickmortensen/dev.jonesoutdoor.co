@@ -41,7 +41,6 @@ a.material-icons {
 }
 
 a.material-icons:hover {
-
 	@apply text-red-500;
 	transform: scale(1.1);
 	transition: all 0.5s ease-out;
@@ -66,6 +65,10 @@ span.warning {
 
 	@apply bg-indigo-700 outline-none shadow-outline;
 
+}
+
+.dark-shadow {
+	text-shadow: 2px 2px 2px #515153;
 }
 
 .btn:active {
@@ -110,7 +113,7 @@ span.warning {
 }
 
 .tailwind-input {
-	@apply w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight;
+	@apply w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight bg-gray-300;
 }
 
 .tailwind-input:focus {
@@ -199,22 +202,21 @@ span.warning {
 	position: relative;
 }
 
-#outdoor-home-link {
-	color: #fff;
-	font-size: 1.2rem;
-	@apply tracking-wider align-top font-semibold;
-
-}
-#outdoor-home-link:visited,
-#outdoor-home-link:focus,
-#outdoor-home-link:active,
-#outdoor-home-link:hover {
-	text-shadow: 2px 2px 1px #515153;
-	color: #fff;
-}
-
 #primary-menu li {
-	@apply px-2 uppercase;
+	@apply uppercase;
 }
 
+li.end-period {
+	@apply pt-4;
+}
+li.end-period::after {
+	content: '.';
+}
+
+#wp-content {
+
+	a {
+		@apply text-indigo-600;
+	}
+}
 @tailwind utilities;

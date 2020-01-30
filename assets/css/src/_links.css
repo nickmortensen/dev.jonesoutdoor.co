@@ -1,41 +1,87 @@
-@import "_custom-properties.css";
-
 /*--------------------------------------------------------------
 # Links
 --------------------------------------------------------------*/
-/* stylelint-disable */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
 a {
-	color: var(--color-link);
+	--link-color: var(--color-link);
+	--link-hover: var(--color-theme-yellow);
+	--link-visited: var(--color-link-visited);
+	--link-active: var(--color-link-active);
+	background-color: transparent;
+	color: var(--link-color);
+
+
+	&:visited {
+		color: var(---link-visited);
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:focus,
+	&:active {
+		color: var(--link-active);
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
 }
-/* stylelint-enable */
 
-a:visited {
-	color: var(--color-link-visited);
-}
-
-a:hover,
-a:focus,
-a:active {
-	color: var(--color-link-active);
-}
-
-a:focus {
-	outline: thin dotted;
-}
-
-a:hover,
-a:active {
-	outline: 0;
-}
-
-
-#primary-menu {
+/* Branding in header */
+a#outdoor-home-link {
 	--link-color: var(--color-theme-white);
 	--link-hover: var(--color-theme-yellow);
+	--link-visited: var(--color-theme-white);
+	--link-active: var(--color-link-active);
+	background-color: transparent;
+	color: var(--link-color);
+
+
+	&:visited {
+		color: var(--link-visited);
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:focus,
+	&:active {
+		color: var(--link-active);
+	}
+
+	&:focus {
+		outline: thin dotted;
+	}
+
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+
+/* menu from the homepage */
+#primary-menu {
+	--submenu-bg: var(--indigo-600);
 
 	& a {
+		--link-color: var(--color-theme-white);
+		--link-hover: var(--yellow-500);
+		--link-size: 0.7rem;
+		--link-active: var(--color-theme-white);
 		color: var(--link-color);
-		transition: color 0.5s var(--transition-timing-function);
+		transition: color 0.5s ease;
+		font-size: var(--link-size);
 
 		&:hover {
 			text-decoration: none;
@@ -44,12 +90,42 @@ a:active {
 
 		&:active {
 			text-decoration: none;
-			color: var(--link-hover);
-			text-shadow: 1px 1px 1px var(--color-theme-grey);
+			color: var(--link-active);
+			text-shadow: 1px 1px 1px var(--gray-500);
 		}
 	}
 
 	& .sub-menu {
-		background: var(--gray);
+		background: var(--submenu-bg);
+
+		& a {
+			min-width: 100%;
+			padding: 1vmin;
+			margin: 0;
+			transition: background-color 0.5s ease;
+
+			&:hover {
+				background-color: var(--indigo-800);
+			}
+
+			&:active {
+				background-color: var(--indigo-900);
+			}
+		}
+	}
+}
+
+@media screen and ( min-width: 526px ) and ( max-width: 1000px ) {
+	#primary-menu {
+		--link-size: 0.5rem;
+	}
+}
+
+.acceptable_filetypes {
+	margin: 1vmin;
+	transition: all 0.3s ease;
+
+	&:hover {
+		transform: scale(1.15);
 	}
 }

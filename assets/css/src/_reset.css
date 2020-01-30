@@ -20,6 +20,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
+	box-sizing: border-box;
 }
 
 /* Sections
@@ -31,6 +32,7 @@ html {
 
 body {
 	margin: 0;
+	background: var(--color-theme-white);
 }
 
 link {
@@ -55,21 +57,18 @@ h1 {
  * 2. Show the overflow in Edge and IE.
  */
 
+/* stylelint-disable */
 hr {
 	box-sizing: content-box; /* 1 */
 	height: 0; /* 1 */
 	overflow: visible; /* 2 */
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
 }
+/* stylelint-enable */
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-
-pre {
-	font-family: monospace; /* 1 */
-	font-size: 1em; /* 2 */
-}
 
 /* Text-level semantics
    ========================================================================== */
@@ -77,10 +76,6 @@ pre {
 /**
  * Remove the gray background on active links in IE 10.
  */
-
-a {
-	background-color: transparent;
-}
 
 /**
  * 1. Remove the bottom border in Chrome 57-
@@ -152,6 +147,9 @@ sup {
 
 img {
 	border-style: none;
+	display: block;
+	height: auto;
+	max-width: 100%;
 }
 
 /* Forms
@@ -309,12 +307,10 @@ textarea {
  * 1. Correct the inability to style clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
-/* stylelint-disable */
 ::-webkit-file-upload-button {
 	-webkit-appearance: button; /* 1 */
 	font: inherit; /* 2 */
 }
-/* stylelint-enable */
 
 /* Interactive
    ========================================================================== */
@@ -322,7 +318,6 @@ textarea {
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
-
 details {
 	display: block;
 }
@@ -330,7 +325,6 @@ details {
 /*
  * Add the correct display in all browsers.
  */
-
 summary {
 	display: list-item;
 }
@@ -341,7 +335,6 @@ summary {
 /**
  * Add the correct display in IE 10+.
  */
-
 template {
 	display: none;
 }
@@ -349,7 +342,6 @@ template {
 /**
  * Add the correct display in IE 10.
  */
-
 [hidden] {
 	display: none;
 }

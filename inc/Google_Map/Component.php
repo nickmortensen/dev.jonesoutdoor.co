@@ -5,6 +5,7 @@
  * @package wp_rig
  */
 
+// phpcs:disable WordPress.WP.EnqueuedResourceParameters.MissingVersion
 namespace WP_Rig\WP_Rig\Google_Map;
 
 use WP_Rig\WP_Rig\Component_Interface;
@@ -17,6 +18,7 @@ use function wp_enqueue_script;
 use function wp_enqueue_scripts;
 use function get_theme_file_uri;
 use function wp_localize_script;
+use function is_front_page;
 
 /**
  * Class for displaying a Google Map.
@@ -34,7 +36,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *
 	 * @return string Google API Key for MAPS and FORMS.
 	 */
-	public function get_google_apikey() : string {
+	private function get_google_apikey() : string {
 		return GOOGLE_MAPS_API;
 	}
 
@@ -48,10 +50,18 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/**
+	 * Get the url of the javascript file to call that will instantiate the map
+	 */
+	private function get_url_call() : string {
+		$api_key = $this->get_google_apikey();
+		return "https://maps.googleapis.com/maps/api/js?key={$api_key}&callback=initMap";
+	}
+
+	/**
 	 * Adds the action and filter hooks to integrate with WordPress.
 	 */
 	public function initialize() {
-		// add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_google_map_javascript' ] );
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_google_map_javascript' ] );
 	}
 
 	/**
@@ -64,7 +74,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function template_tags() : array {
 		return [
 			'output_the_map_element' => [ $this, 'output_the_map_element' ],
-			// 'output_the_controls'    => [ $this, 'output_the_controls' ],
 		];
 	}
 
@@ -76,43 +85,36 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( wp_rig()->is_amp() ) {
 			return;
 		}
-		// $map_styles       = get_theme_file_uri( '/assets/js/google_map_style.min.js' );
-		// $locations        = get_theme_file_uri( '/assets/js/google_map_locations.min.js' );
-		// $map_core         = get_theme_file_uri( '/assets/js/google_map_core.min.js' );
-		// $uri_array        = [ $map_styles, $locations, $map_core ];
-		// $javascripts      = array_combine( $dependency_array, $uri_array );
-		$dependency_array = [ 'google-map-style', 'google-map-locations', 'google-map-core' ];
-		foreach ( $dependency_array as $handle ) {
-			// $uri = get_theme_file_uri( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' );
-			// wp_register_script( $handle, $uri, array(), wp_rig()->get_asset_version( $uri ), false );
-			$uri = get_theme_file_uri( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' );
-			$ver = 'developement' === ENVIRONMENT ? wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' ) ) : '20200119';
-			wp_register_script( $handle, $uri, array(), $ver, false );
-		}
-		// wp_register_script( 'google-map-style', get_theme_file_uri( '/assets/js/google_map_style.min.js' ), array(), '20190916', false );
-		// wp_register_script( 'google-map-locations', get_theme_file_uri( '/assets/js/google_map_locations.min.js' ), array(), '20190916', false );
-		// wp_register_script( 'google-map-core', get_theme_file_uri( '/assets/js/google_map_core.min.js' ), array(), wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/google_map_core.min.js' ) ), false );
-		// phpcs:disable
-		wp_enqueue_script( 'google-map-api-call', 'https://maps.googleapis.com/maps/api/js?key=' . $this->get_google_apikey() . '&callback=initMap', $dependency_array, null, true );
-		// phpcs:enable
 
-		// Now supply an array of data to a javascript file that was enqueued earlier in the function using the mapData object.
-		$data_to_pass = [
-			'apiKey'           => $this->get_google_apikey(),
-			'center'           => [
-				'lat' => 44.529364,
-				'lng' => -88.117770,
-			],
-			'jonesCoordinates' => [
-				'lat' => 44.429640,
-				'lng' => -88.117770,
-			],
-			'iconSize'         => '64',
-			'iconDir'          => get_theme_file_uri( '/assets/images/markers/' ),
-			'zoomLevel'        => '8',
-			'streetViewSize'   => 460,
-		];
-		wp_localize_script( 'google-map-core', 'mapData', $data_to_pass );
+		if ( is_front_page() ) {
+
+			$dependency_array = [ 'google-map-style', 'google-map-locations', 'google-map-core' ];
+			foreach ( $dependency_array as $handle ) {
+				$uri = get_theme_file_uri( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.min.js' );
+				$ver = 'developement' === ENVIRONMENT ? wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/' . preg_replace( '/-/i', '_', $handle ) . '.js' ) ) : '20200119';
+				wp_register_script( $handle, $uri, array(), $ver, false );
+			}
+
+			wp_enqueue_script( 'google-map-api-call', $this->get_url_call(), $dependency_array, null, true );
+
+			// Supply array of data to a js file. File was enqueued earlier in the function using the mapData object.
+			$data_to_pass = [
+				'apiKey'           => $this->get_google_apikey(),
+				'center'           => [
+					'lat' => 44.529364,
+					'lng' => -88.117770,
+				],
+				'jonesCoordinates' => [
+					'lat' => 44.429640,
+					'lng' => -88.117770,
+				],
+				'iconSize'         => '64',
+				'iconDir'          => get_theme_file_uri( '/assets/images/markers/' ),
+				'zoomLevel'        => '8',
+				'streetViewSize'   => 460,
+			];
+			wp_localize_script( 'google-map-core', 'mapData', $data_to_pass );
+		}
 	}
 	/**
 	 * Displays the google map.
@@ -124,7 +126,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function output_the_map_element() {
 		$map_section = '
 		<h2 class="mt-2 mb-2 mx-auto text-5 xl"> Our locations </h2>
-		<section id="map-container" class="bg-red-500" style="min-height: 80px;>
+		<section id="map-container" class="bg-indigo-500" style="min-height: 80px;>
 			<div id="map"></div><!-- end div#map -->
 		</section><!-- end section#map-container -->';
 		return wp_kses( $map_section, 'post' );

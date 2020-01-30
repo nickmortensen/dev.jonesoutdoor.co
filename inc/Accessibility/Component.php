@@ -52,7 +52,7 @@ class Component implements Component_Interface {
 			return;
 		}
 
-		// Enqueue the navigation script.
+		// Enqueue the navigation script. The last element asks whether to load the script within the footer. We don't want that.
 		wp_enqueue_script(
 			'wp-rig-navigation',
 			get_theme_file_uri( '/assets/js/navigation.min.js' ),
@@ -60,6 +60,13 @@ class Component implements Component_Interface {
 			wp_rig()->get_asset_version( get_theme_file_path( '/assets/js/navigation.min.js' ) ),
 			false
 		);
+
+		/*
+		Allows us to add the js right within the module.
+		Setting 'precache' to true means we are loading this script in the head of the document.
+		By setting 'async' to true,it tells the browser to wait until it finishes loading to run the script.
+		'Defer' would mean wait until EVERYTHING is done loading to run the script.
+		*/
 		wp_script_add_data( 'wp-rig-navigation', 'async', true );
 		wp_script_add_data( 'wp-rig-navigation', 'precache', true );
 		wp_localize_script(

@@ -41,7 +41,7 @@ namespace WP_Rig\WP_Rig;
 		<?php esc_html_e( 'Skip to content', 'wp-rig' ); ?>
 	</a>
 
-		<header id="masthead" class="flex flex-col lg:flex-row xl:flex-row justify-between pr-2 py-4" style="background: rgba(0, 0, 0, .6)">
+		<header id="masthead" class="flex flex-col lg:flex-row xl:flex-row justify-between pr-2 py-4 reef-gradient">
 
 		<?php get_template_part( 'template-parts/header/branding' ); ?>
 

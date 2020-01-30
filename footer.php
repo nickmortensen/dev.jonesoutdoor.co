@@ -14,13 +14,11 @@ namespace WP_Rig\WP_Rig;
 ?>
 
 	<footer id="colophon" class="site-footer">
+		<?php get_template_part( 'template-parts/footer/footer-widgets' ); ?>
 		<?php get_template_part( 'template-parts/footer/info' ); ?>
+		<?= wp_rig()->get_filetypes_section(); ?>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
-<div class="w-screen bg-blue-800 p-8">
-	<?php get_template_part( 'template-parts/footer/searchform' ); ?>
-</div>
 
 <?php wp_footer(); ?>
 

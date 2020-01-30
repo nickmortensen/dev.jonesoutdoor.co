@@ -22,17 +22,6 @@ use function get_theme_file_uri;
 use function get_theme_file_path;
 use function wp_localize_script;
 
-
-/**
- * @var $reasons_why_post_ids
- * get_slug
- * initialize
- * template_tags
- * display_contact_form
- * create_contact_form
- * wrap_all_fields_opening_div_tag
- * wrap_all_fields_closing_div_tag
- */
 /**
  * Class for adding a contact form.
  */
@@ -121,10 +110,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function create_why_outdoor_section() {
 		$why_outdoor_html = <<<WHY
 		<!-- WHY -->
-		<div id="why-outdoor" class="text-center w-full pb-16">
-			<h3 class="text-4xl md:text-2xl text-gray-600">Why Outdoor?</h3>
-			<p class="text-3xl font-light text-gray-700 pt-4 w-10/12 xl:w-2/3 mx-auto">
-			No matter what their media consumption habits are, <span class="text-blue-600 font-bold">Outdoor reaches customers</span>.
+		<div id="why-outdoor" class="text-center w-full py-4 text-gray-600">
+			<h3 class="text-4xl">Why Outdoor?</h3>
+			<p class="text-3xl font-light pt-4 w-10/12 xl:w-2/3 mx-auto">
+			No matter what their media consumption habits are, <span class="text-indigo-600 font-bold"><em>Outdoor reaches customers</em></span>.
 			</p>
 		</div>
 WHY;
@@ -140,16 +129,18 @@ WHY;
 		$posts   = $this->reasons_why_post_ids;
 		$reasons = [];
 		foreach ( $posts as $post ) {
-			$content    = get_post_field( 'post_content', $post );
+			$findthese  = [ '/\<li\>/', '/ml-4/', '/pl-2/' ];
+			$replace    = [ '<li class="end-period">', 'mx-4 sm:mx-1', 'md:px-4 text-lg sm:text-base font-hairline mt-2' ];
+			$content    = preg_replace( $findthese, $replace, get_post_field( 'post_content', $post ) );
 			$identifier = $post;
 			$post_title = get_the_title( $identifier );
 			$icon       = get_post_meta( $identifier, 'material_icon', true );
 			$post_html  = <<<REASON
 			<!-- REASON -->
-			<div class="w-screen flex flex-col pt-4 px-16 lg:px-1 lg:pt-2 justify-center align-center lg:justify-start">
-				<div class="flex flex-col justify-center align-center items-center pb-4 mx-auto">
-					<i class="material-icons text-3xl">$icon </i>
-					<h4 class="font-normal text-2xl text-black items-center">$post_title</h4>
+			<div class="w-screen flex flex-col pt-8 px-16 justify-start items-center">
+				<div class="flex flex-col justify-start items-center pb-1 mx-auto">
+					<i class="dark-shadow material-icons text-5xl text-indigo-600">$icon</i>
+					<h4 class="font-normal text-4xl sm:text-2xl pb-2 border-b-2 border-gray-600">$post_title</h4>
 				</div>
 				$content
 			</div>
@@ -166,7 +157,7 @@ REASON;
 	 * @return string $output The HTML output.
 	 */
 	public function create_reasons_why_section() {
-		$output  = '<section id="reasons" class="w-screen flex flex-col xl:flex-row justify-start align-top justify-center mx-auto pb-8">';
+		$output  = '<section id="reasons" class="w-screen flex flex-col items-center justify-center bg-orange-100 mb-8">';
 		$output .= $this->create_reasons_why_columns();
 		$output .= '</section><!-- end section#reasons -->';
 		return $output;

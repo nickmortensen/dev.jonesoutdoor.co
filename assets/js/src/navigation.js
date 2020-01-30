@@ -150,7 +150,8 @@ function initNavToggleSmall() {
  * @param {Object} nav Navigation element.
  */
 function initEachNavToggleSmall( nav ) {
-	const menuTOGGLE = nav.querySelector( '.menu-toggle' );
+	// let menuTOGGLE = nav.querySelector( '.menu-toggle' );
+	let menuTOGGLE = nav.querySelector( '#menu-toggler' );
 
 	// Return early if MENUTOGGLE is missing.
 	if ( ! menuTOGGLE ) {
@@ -161,8 +162,9 @@ function initEachNavToggleSmall( nav ) {
 	menuTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	menuTOGGLE.addEventListener( 'click', ( e ) => {
-		nav.classList.toggle( 'nav--toggled-on' );
+		nav.classList.toggle( 'nav--toggled-on' ); // the nav is the containing element.
 		e.target.setAttribute( 'aria-expanded', 'false' === e.target.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
+		e.target.textContent = 'menu' === e.target.textContent ? 'menu_open' : 'menu';
 	}, false );
 }
 
@@ -265,14 +267,14 @@ const menuToggle = document.getElementById( 'menu-toggler' );
 
 
 
-function buttonText( event ) {
-	let menu = 'menu';
-	let currentText = event.target.textContent.toLowerCase();
-	let open = '_open';
-	let newText = currentText === menu+open ? 'menu' : 'menu_open'
-	event.target.textContent = newText;
+// function buttonText( event ) {
+// 	let menu = 'menu';
+// 	let currentText = event.target.textContent.toLowerCase();
+// 	let open = '_open';
+// 	let newText = currentText === menu+open ? 'menu' : 'menu_open'
+// 	event.target.textContent = newText;
 
 
 
-};
-menuToggle.addEventListener( 'click', buttonText, false );
+// };
+// menuToggle.addEventListener( 'click', buttonText, false );

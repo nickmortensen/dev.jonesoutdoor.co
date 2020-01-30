@@ -1,4 +1,5 @@
 /* eslint-env es6 */
+
 'use strict';
 
 /**
@@ -38,9 +39,7 @@ export function stylesBeforeReplacementStream() {
 			extra: [ paths.config.themeConfig ],
 		} ),
 		gulpPlugins.phpcs( {
-			// bin            : `${ rootPath }/vendor/bin/phpcs`,
 			bin            : '/Users/nickmortensen/.composer/vendor/bin/phpcs',
-			// standard       : 'WordPress',
 			standard       : 'mortensen',
 			warningSeverity: 0,
 		} ),
@@ -49,59 +48,11 @@ export function stylesBeforeReplacementStream() {
 	] );
 }
 
-const stylelintrules = {
-	extends: "/usr/local/lib/node_modules/stylelint-config-wordpress",
-	ignoreFiles: [
-		`${rootPath}/assets/css/*.min.css`,
-		`${rootPath}/assets/css/src/tailwind/tailwind.css`,
-		`${rootPath}/assets/css/src/tailwind/source/_tailwind.css`
-	],
-	rules: {
-		"at-rule-no-unknown": [
-			true,
-			{
-				ignoreAtRules: [
-				"custom-media",
-				"/^custom/",
-				"tailwind"
-			]
-			}
-		],
-		"no-descending-specificity": null,
-		"no-duplicate-selectors"   : null,
-		"comment-empty-line-before": [
-			"always",
-			{
-				except: [ 'first-nested' ],
-				ignore: ["after-comment", "stylelint-commands"]
-			}
-		],
-		"at-rule-empty-line-before": [ "always", {
-				except: [ "after-same-name", "inside-block", "blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested" ],
-				ignore: ["after-comment", "first-nested" ]
-			}
-		],
-		"rule-empty-line-before": [
-			"always",
-			{
-				ignore: ["after-comment","first-nested", "inside-block"]
-			}
-		],
-		"value-list-comma-newline-after": "always-multi-line",
-		"block-opening-brace-newline-after": [
-			"always"
-		],
-		"block-closing-brace-newline-before": [
-			"always"
-		]
-    }
-};
-
 export function stylesAfterReplacementStream() {
 	const config = getThemeConfig();
 
 	const postcssPlugins = [
-		stylelint( stylelintrules ),
+		stylelint(),
 		postcssPresetEnv( {
 			importFrom: (
 				configValueDefined( 'config.dev.styles.importFrom' ) ?

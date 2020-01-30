@@ -34,9 +34,9 @@ aria-label="<?php esc_attr_e( 'Main menu', 'wp-rig' ); ?>"
 		</amp-state>
 		<?php endif; ?>
 
-	<button
+	<!-- <button
 	id="menu-toggler"
-	class="menu-toggle material-icons"
+	class="menu-toggle"
 	aria-label="<?php esc_attr_e( 'Open menu', 'wp-rig' ); ?>"
 	aria-controls="primary-menu"
 	aria-expanded="false"
@@ -45,8 +45,22 @@ aria-label="<?php esc_attr_e( 'Main menu', 'wp-rig' ); ?>"
 			[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
 		<?php endif; ?>
 	>
-	<i class="material-icons">menu</i>
-	</button>
+
+	</button> -->
+
+
+	<a
+	tabindex="1"
+	id="menu-toggler"
+	class="material-icons"
+	aria-label="<?php esc_attr_e( 'Open menu', 'wp-rig' ); ?>"
+	aria-controls="primary-menu"
+	aria-expanded="false"
+	<?php if ( wp_rig()->is_amp() ) : ?>
+			on="tap:AMP.setState( { siteNavigationMenu: { expanded: ! siteNavigationMenu.expanded } } )"
+			[aria-expanded]="siteNavigationMenu.expanded ? 'true' : 'false'"
+	<?php endif; ?>
+	>menu</a>
 
 	<div class="primary-menu-container">
 		<?php

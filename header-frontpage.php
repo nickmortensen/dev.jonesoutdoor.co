@@ -27,7 +27,11 @@ namespace WP_Rig\WP_Rig;
 	}
 	?>
 
-	<?php wp_head(); ?>
+	<?php
+	wp_head();
+	// Use grid layout if blog index is displayed.
+		wp_rig()->print_styles( 'wp-rig-content', 'wp-rig-front-page' );
+	?>
 </head>
 
 

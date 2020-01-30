@@ -28,6 +28,7 @@ use function dynamic_sidebar;
 class Component implements Component_Interface, Templating_Component_Interface {
 
 	const PRIMARY_SIDEBAR_SLUG = 'sidebar-1';
+	const FOOTER_WIDGETS_SLUG  = 'footer-widgets';
 
 	/**
 	 * Gets the unique identifier for the theme component.
@@ -56,7 +57,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function template_tags() : array {
 		return [
 			'is_primary_sidebar_active' => [ $this, 'is_primary_sidebar_active' ],
+			'is_footer_widgets_active'  => [ $this, 'is_footer_widgets_active' ],
 			'display_primary_sidebar'   => [ $this, 'display_primary_sidebar' ],
+			'display_footer_widgets'    => [ $this, 'display_footer_widgets' ],
 		];
 	}
 
@@ -68,6 +71,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			[
 				'name'          => esc_html__( 'Sidebar', 'wp-rig' ),
 				'id'            => static::PRIMARY_SIDEBAR_SLUG,
+				'description'   => esc_html__( 'Add widgets here.', 'wp-rig' ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			]
+		);
+		register_sidebar(
+			[
+				'name'          => esc_html__( 'Footer Widgets', 'wp-rig' ),
+				'id'            => static::FOOTER_WIDGETS_SLUG,
 				'description'   => esc_html__( 'Add widgets here.', 'wp-rig' ),
 				'before_widget' => '<section id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</section>',
@@ -87,7 +101,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( $this->is_primary_sidebar_active() ) {
 			global $template;
 
-			if ( ! in_array( basename( $template ), [ 'front-page.php', '404.php', '500.php', 'offline.php' ] ) ) {
+			if ( ! in_array( basename( $template ), [ 'front-page.php', '404.php', '500.php', 'offline.php' ], true ) ) {
 				$classes[] = 'has-sidebar';
 			}
 		}
@@ -109,5 +123,21 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function display_primary_sidebar() {
 		dynamic_sidebar( static::PRIMARY_SIDEBAR_SLUG );
+	}
+
+	/**
+	 * Checks whether the footer widgetized area is active.
+	 *
+	 * @return bool True if the footer widgetized area is active, false otherwise.
+	 */
+	public function is_footer_widgets_active() : bool {
+		return (bool) is_active_sidebar( static::FOOTER_WIDGETS_SLUG );
+	}
+
+	/**
+	 * Displays the footer widget.
+	 */
+	public function display_footer_widgets() {
+		dynamic_sidebar( static::FOOTER_WIDGETS_SLUG );
 	}
 }

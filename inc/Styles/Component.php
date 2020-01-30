@@ -80,6 +80,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_enqueue_styles' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'use_tailwind_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'use_tailwind_styles' ] );
+		add_action( 'admin_enqueue_scripts', [ $this, 'add_material_icons' ] );
 		add_action( 'wp_head', [ $this, 'action_preload_styles' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
 		add_filter( 'wp_resource_hints', [ $this, 'filter_resource_hints' ], 10, 2 );
@@ -121,6 +122,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'family' => str_replace( ' ', '+', $family ),
 		];
 		return add_query_arg( $query_args, $base_url );
+	}
+
+	/**
+	 * Add Material Icons to the site.
+	 *
+	 * @see Use admin_enqueue_scripts hook.
+	 */
+	public function add_material_icons() {
+		$icons_url = $this->get_material_icon_font_url();
+		wp_enqueue_style( 'wp-rig-material-icons', $icons_url, [], '9', 'all' );
 	}
 
 	/**
@@ -326,10 +337,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		$css_files = [
 			// phpcs:disable
-			// 'background-gradients' => [
-			// 	'file'   => 'background_gradients.min.css',
-			// 	'global' => true,
-			// ],
 			// 'custom-navigation'    => [
 			// 	'file'   => 'customized_menu.min.css',
 			// 	'global' => true,
@@ -374,6 +381,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					global $template;
 					return 'front-page.php' === basename( $template );
 				},
+			],
+			'wp-rig-footer-widgets' => [
+				'file'             => 'footer-widgets.min.css',
+				'preload_callback' => function() {
+					return wp_rig()->is_footer_widgets_active();
+				},
+			],
+			'wp-rig-related'   => [
+				'file'             => 'related.min.css',
+				'preload_callback' => '__return_false',
 			],
 		];
 

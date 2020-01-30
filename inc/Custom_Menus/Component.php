@@ -24,7 +24,7 @@ use function wp_nav_menu;
  * * `wp_rig()->is_custom_menu_active()`
  * * `wp_rig()->display_custom_menu( array $args = [] )`
  */
-class Component implements Component_Interface, Templating_Component_Interface {
+class Component extends Walker_Nav_Menu implements Component_Interface, Templating_Component_Interface {
 
 	const CUSTOM_MENU_SLUG = 'custom';
 
@@ -34,7 +34,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string Component slug.
 	 */
 	public function get_slug() : string {
-		return 'custom_menus';
+		return 'custom_menu';
 	}
 
 	/**

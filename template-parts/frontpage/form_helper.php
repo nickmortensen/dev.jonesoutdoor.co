@@ -66,16 +66,15 @@ if ( ! $suspect ) {
 		if ( ! $form_errors && ! $missing ) {
 			$headers = implode( "\r\n", $headers );
 		} else {
-
+			return;
 		} // end if / else.
-
 	}//end if.
 }
 // End if.
 
 
 $outgoing_server = 'jonesoutdoor.co';
-$ports = [
+$ports           = [
 	'address'         => [
 		'incoming_testmail_one@jonesoutdoor.co',
 		'incoming_testmail_two@jonesoutdoor.co',
@@ -110,58 +109,60 @@ $ports = [
  *
  * @param array $field Array of attributes for this field.
  */
-// function get_the_single_field( $field, $missing, $form_errors ) {
-// 	$value = '';
-// 	if ( $_POST && isset( $_POST[ $field['name'] ] ) ) {
-// 		$value = $_POST[ $field['name'] ];
-// 	}
 
-// 	echo "<h2> $value </h2>";
-// 	$mode        = $field['mode'];
-// 	$class       = $field['class'];
-// 	$error       = $field['error'];
-// 	$label_class = $field['label_class'];
-// 	$fieldname   = $field['name'];
-// 	$required    = $field['req'];
-// 	$label_text  = $field['label_text'];
-// 	$type        = $field['type'];
-// 	if ( true === (bool) $required ) :
-// 	$required = ' required';
-// 	endif;
-// 	$output  = '';
-// 	$output .= '<!-- ' . strtoupper( $fieldname ) . ' -->' . "\r";
-// 	$output .= '<div class="mb-4 input_holders">';
-// 	$output .= "\r\t";
-// 	$output .= '<label';
-// 	$output .= "\r\t";
-// 	$output .= array_key_exists( 'label_id', $field ) ? ' id="' . $field['label_id'] . '"' : '';
-// 	$output .= ' class="' . esc_attr( $label_class ) . ' ' . "\r\t" . ' for="' . esc_attr( $fieldname ) . '"';
-// 	$output .= '>';
-// 	$output .= esc_html( $label_text );
+/*
+Commented out
+function get_the_single_field( $field, $missing, $form_errors ) {
+$value = '';
+if ( $_POST && isset( $_POST[ $field['name'] ] ) ) {
+$value = $_POST[ $field['name'] ];
+}
 
-// 	if ( true === (bool) $field['req'] && ( $form_errors || $missing ) ) {
-// 		$output .= wp_rig()->issue_warning( $error );
-// 	}
-// 	$output .= "</label>\r\t <!-- end label for $fieldname input -->";
-// 	$output .= "\n\t";
-// 	$output .= '<input';
-// 	$output .= "\n\t";
-// 	$output .= ' id="' . esc_attr( $fieldname ) . '"';
-// 	$output .= "\n\t";
-// 	$output .= ' class="' . esc_attr( $class ) . '"';
-// 	$output .= "\n\t";
-// 	$output .= ' name="' . esc_attr( $fieldname ) . '"';
-// 	$output .= "\n\t";
-// 	$output .= ' type="' . esc_attr( $type ) . '"';
-// 	$output .= "\n\t";
-// 	$output .= ' inputmode="' . esc_attr( $mode ) . '"';
-// 	$output .= "\n\t";
-// 	if ( $form_errors || $missing ) :
-// 		$output .= wp_rig()->retain_value( $value );
-// 	endif;
-// 	$output .= '>';
-// 	$output .= "\n";
-// 	$output .= '</div>';
-// 	$output .= "\n";
-// 	return $output;
-// }
+echo "<h2> $value </h2>";
+$mode        = $field['mode'];
+$class       = $field['class'];
+$error       = $field['error'];
+$label_class = $field['label_class'];
+$fieldname   = $field['name'];
+$required    = $field['req'];
+$label_text  = $field['label_text'];
+$type        = $field['type'];
+if ( true === (bool) $required ) :
+$required = ' required';
+endif;
+$output  = '';
+$output .= '<!-- ' . strtoupper( $fieldname ) . ' -->' . "\r";
+$output .= '<div class="mb-4 input_holders">';
+$output .= "\r\t";
+$output .= '<label';
+$output .= "\r\t";
+$output .= array_key_exists( 'label_id', $field ) ? ' id="' . $field['label_id'] . '"' : '';
+$output .= ' class="' . esc_attr( $label_class ) . ' ' . "\r\t" . ' for="' . esc_attr( $fieldname ) . '"';
+$output .= '>';
+$output .= esc_html( $label_text )if ( true === (bool) $field['req'] && ( $form_errors || $missing ) ) {
+	$output .= wp_rig()->issue_warning( $error );
+}
+$output .= "</label>\r\t <!-- end label for $fieldname input -->";
+$output .= "\n\t";
+$output .= '<input';
+$output .= "\n\t";
+$output .= ' id="' . esc_attr( $fieldname ) . '"';
+$output .= "\n\t";
+$output .= ' class="' . esc_attr( $class ) . '"';
+$output .= "\n\t";
+$output .= ' name="' . esc_attr( $fieldname ) . '"';
+$output .= "\n\t";
+$output .= ' type="' . esc_attr( $type ) . '"';
+$output .= "\n\t";
+$output .= ' inputmode="' . esc_attr( $mode ) . '"';
+$output .= "\n\t";
+if ( $form_errors || $missing ) :
+	$output .= wp_rig()->retain_value( $value );
+endif;
+$output .= '>';
+$output .= "\n";
+$output .= '</div>';
+$output .= "\n";
+return $output;
+
+*/

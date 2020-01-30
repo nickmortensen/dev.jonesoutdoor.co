@@ -57,7 +57,7 @@ if ( isset( $_POST['submit'] ) ) {
 }
 </style>
 
-<section id="info-container" class="text-white w-3/4 h-64 bg-indigo-300 mx-auto border-b-8 border-blue-800">
+<section id="info-container" class="text-white w-3/4 h-64 bg-indigo-600 mx-auto border-b-8 border-blue-800">
 	<span class="p-2 full_name bg-orange-600 text-white"><?= $full_name; ?></span>
 	<span class="p-2 from_email bg-blue-900"><?= $from_email; ?></span>
 	<span class="p-2 company_name bg-teal-700"><?= $company_name; ?></span>
