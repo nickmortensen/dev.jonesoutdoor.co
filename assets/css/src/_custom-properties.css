@@ -118,12 +118,12 @@
 	--pink-900: #702459;
 
 	/* END Tailwind Colors */
-	--global-font-color: var(--gray-800);
-	--global-font-family: "Roboto", serif;
+	--global-font-color: var(--gray-700);
+	--global-font-family: ubuntu, serif;
 	--global-font-size: 14;
 	--global-font-line-height: 1.4;
-	--highlight-font-family: -apple-system, system-ui, blinkmacsystemfont, "noto sans", sans-serif;
-	--content-width: 45rem;
+	--highlight-font-family: "noto sans", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+	--content-width: 80vw;
 	--dropdown-symbol-width: 0.7em;
 
 	/* Custom editor colors */

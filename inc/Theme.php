@@ -152,7 +152,7 @@ class Theme {
 			new Post_Thumbnails\Component(),
 			new Customizer\Component(),
 			new Styles\Component(),
-			new Google_Map\Component(),
+			// new Google_Map\Component(),
 			new Contact_Form\Component(),
 			new Frontpage\Component(),
 			new Related_Posts\Component(),

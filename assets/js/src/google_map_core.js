@@ -20,8 +20,6 @@
 */
 
 /* eslint-disable no-undef, no-unused-vars */
-
-
 const boards = allBillboards;
 
 const hasMultipleFaces = item => {
@@ -33,30 +31,10 @@ const isASingleFace = item => {
 	if ( ! item.hasOwnProperty( 'length' ) ) {
 		return true;
 	}
-}
+};
 const singles = boards.filter( isASingleFace );
 const multiples = boards.filter( hasMultipleFaces );
 
-
-
-// const singleFace = boards.filter( board => {
-// 	board.hasOwnProperty( 'length' );
-// } );
-// console.log( singleFace, 'does work' );
-// boards.forEach( board => {
-// 	if ( board.hasOwnProperty( 'length' ) ) {
-// 		console.log( board[0].id, ' is an Array' );
-// 	} else {
-// 		console.log( board.id, ' is an object ');
-// 	}
-// } );
-/*
-control.js v0.1 - Add custom controls to Google Maps with ease
-Created by Ron Royston, https://rack.pub
-https://github.com/rhroyston/control
-License: MIT
-
-*/
 // Instantiate the following variables.
 let map;
 const markers = []; // Instantiate the markers array -- will be pushing data objects into this array when I iterate through the 'billboards' array.
@@ -106,8 +84,6 @@ billboards.forEach( billboard => {
 const replaceThisDivWithAMap = document.getElementById( 'map' ); // ID of the element within the HTML where we will place the google map.
 const centerCoordinates      = mapData.center;
 
-
-
 // This is where we INITIALIZE THE MAP and add markers to it as well as the content of the marker div that pops up when the marker is clicked.
 function initMap() {
 	/**
@@ -125,17 +101,12 @@ function initMap() {
 			position: google.maps.ControlPosition.LEFT_CENTER,
 		},
 		zoomControl: true,
-		zoomControlOptions: {
-			position: google.maps.ControlPosition.LEFT_CENTER,
-		},
+		zoomControlOptions: { position: google.maps.ControlPosition.LEFT_CENTER },
 		scaleControl: true,
 		streetViewControl: true,
-		streetViewControlOptions: {
-			position: google.maps.ControlPosition.LEFT_CENTER,
-		},
+		streetViewControlOptions: { position: google.maps.ControlPosition.LEFT_CENTER },
 		fullscreenControl: true,
 	}); // end map declaration.
-
 
 	/**
 	 * The popup window when we click upon a marker.
@@ -181,8 +152,4 @@ function initMap() {
 			billboardDetailsPopup.open( map, marker );
 		});
 	}); // end event listener for clicks on marker icons.
-
-
-
-
 } // end initMap()

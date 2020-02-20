@@ -238,7 +238,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string $version Seconds from the epoch.
 	 */
 	public function seconds_from_epoch() {
-		$version = date( 'U' );
-		return $version;
+		return date( 'U' );
 	}
 }

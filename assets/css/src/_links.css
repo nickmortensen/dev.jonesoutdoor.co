@@ -123,9 +123,11 @@ a#outdoor-home-link {
 
 .acceptable_filetypes {
 	margin: 1vmin;
+	max-width: 160px;
 	transition: all 0.3s ease;
 
 	&:hover {
 		transform: scale(1.15);
 	}
+
 }

@@ -1,9 +1,5 @@
 @import "_custom-properties.css";
 
-:root {
-
-}
-
 .footer-widgets-area {
 
 	display: grid;
@@ -33,4 +29,3 @@
 	padding-bottom: 0.5vmin;
 	border-bottom: 4px solid var(--yellow-600);
 }
-

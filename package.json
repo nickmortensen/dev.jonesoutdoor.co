@@ -13,7 +13,7 @@
 	"bugs": {
 		"url": "https://github.com/wprig/wprig/issues"
 	},
- 	"devDependencies": {
+	"devDependencies": {
 		"@babel/core": "^7.7.7",
 		"@babel/preset-env": "^7.7.7",
 		"@babel/register": "^7.7.7",
@@ -99,24 +99,43 @@
 			"es6": true
 		},
 		"rules": {
-			"arrow-parens": [ "error", "as-needed" ],
-			"comma-dangle": [ "error", {
+			"arrow-parens": [
+				"error",
+				"as-needed"
+			],
+			"comma-dangle": [
+				"error",
+				{
 					"arrays": "always-multiline",
 					"objects": "always-multiline"
 				}
 			],
-			"indent": [ "error", "tab" ],
+			"indent": [
+				"error",
+				"tab"
+			],
 			"no-console": 0,
 			"no-multi-spaces": "off",
 			"no-unused-vars": 1,
 			"semi": 2,
-			"space-in-parens": [ "error", "always",
+			"space-in-parens": [
+				"error",
+				"always",
 				{
-					"exceptions": [ "{}", "[]" ]
+					"exceptions": [
+						"{}",
+						"[]"
+					]
 				}
 			],
-			"template-curly-spacing": [ "error", "never" ],
-			"yoda": [ "error", "always" ]
+			"template-curly-spacing": [
+				"error",
+				"never"
+			],
+			"yoda": [
+				"error",
+				"always"
+			]
 		},
 		"globals": {
 			"jQuery": "readonly",
@@ -124,7 +143,9 @@
 		}
 	},
 	"jest": {
-		"setupFilesAfterEnv": [ "jest-expect-message" ]
+		"setupFilesAfterEnv": [
+			"jest-expect-message"
+		]
 	},
 	"stylelint": {
 		"extends": "stylelint-config-wordpress",
@@ -133,20 +154,38 @@
 			"comment-empty-line-before": [
 				"always",
 				{
-					"except": [ "first-nested" ],
-					"ignore": [ "after-comment", "stylelint-commands" ]
+					"except": [
+						"first-nested"
+					],
+					"ignore": [
+						"after-comment",
+						"stylelint-commands"
+					]
 				}
 			],
 			"rule-empty-line-before": [
-					"always",
-					{
-						"ignore": [ "after-comment", "first-nested", "inside-block" ]
-					}
+				"always",
+				{
+					"ignore": [
+						"after-comment",
+						"first-nested",
+						"inside-block"
+					]
+				}
 			],
 			"at-rule-empty-line-before": [
-				"always", {
-					"except": [ "inside-block", "blockless-after-same-name-blockless", "blockless-after-blockless", "first-nested" ],
-					"ignore": ["after-comment", "first-nested" ]
+				"always",
+				{
+					"except": [
+						"inside-block",
+						"blockless-after-same-name-blockless",
+						"blockless-after-blockless",
+						"first-nested"
+					],
+					"ignore": [
+						"after-comment",
+						"first-nested"
+					]
 				}
 			]
 		}

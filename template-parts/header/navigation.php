@@ -66,6 +66,7 @@ aria-label="<?php esc_attr_e( 'Main menu', 'wp-rig' ); ?>"
 		<?php
 		$args = [
 			'menu_id' => 'primary-menu',
+			'walker'  => new \Jones_Walker()
 		];
 		wp_rig()->display_primary_nav_menu( $args );
 		?>

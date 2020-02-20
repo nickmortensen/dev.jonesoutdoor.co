@@ -910,25 +910,25 @@ video {
 
 @media screen and ( width <= 525px ) {
   body {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 
 @media screen and ( 525px <= width <= 799px ) {
   body {
-    font-size: 10px;
+    font-size: 14px;
   }
 }
 
 @media screen and ( 800px <= width <= 1279px ) {
   body {
-    font-size: 12px;
+    font-size: 18px;
   }
 }
 
 @media screen and ( 1280px <= width ) {
   body {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 

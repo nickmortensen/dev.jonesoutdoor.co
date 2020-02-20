@@ -15,6 +15,16 @@ get_header( 'frontpage' );
 
 get_template_part( $masthead );
 
+$item = get_post( 129, 'OBJECT', 'display' );
+
+echo '<pre>';
+print_r( $item );
+echo '</pre>';
+
+if ( 'development' === ENVIRONMENT ) {
+	echo '<a href="http://localhost/phpMyAdmin/?lang=en">PHPMYADMIN</a>';
+}
+
 ?>
 
 
@@ -34,7 +44,7 @@ get_template_part( $form );
 </section>
 <?php
 
-echo wp_rig()->output_the_map_element();
+// echo wp_rig()->output_the_map_element();
 
 get_footer();
 ?>

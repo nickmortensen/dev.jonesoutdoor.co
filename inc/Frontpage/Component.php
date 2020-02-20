@@ -50,6 +50,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function get_gradients() : array {
 		$gradients = [ 'rainbow', 'horizon', 'rosewater', 'bloodymary', 'aubergine', 'aquamarine', 'sunrise', 'purple', 'seaweed', 'steelgray', 'mirage', 'reef', 'stellar' ];
+		$gradients = [ 'horizon', 'rosewater', 'aubergine', 'aquamarine', 'sunrise', 'steelgray', 'mirage', 'reef', 'stellar' ];
 		return $gradients;
 	}
 

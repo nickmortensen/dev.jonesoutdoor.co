@@ -81,6 +81,7 @@
 @media (--sidebar-query) {
 	.has-sidebar .site {
 		margin: 0;
+
 		/* display: grid;
 		grid-template-columns: 3fr 1fr;
 		grid-gap: 2rem; */

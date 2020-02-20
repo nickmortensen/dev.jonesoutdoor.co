@@ -64,3 +64,6 @@ require get_template_directory() . '/inc/functions.php';
 
 // Initialize the theme.
 call_user_func( 'WP_Rig\WP_Rig\wp_rig' );
+
+// Load the `wp_rig()` entry point function.
+require get_template_directory() . '/inc/Custom_Menus/Component.php';

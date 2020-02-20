@@ -79,7 +79,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'init', [ $this, 'disable_the_goddamned_emoji' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'action_enqueue_styles' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'use_tailwind_styles' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'use_tailwind_styles' ] );
+		// add_action( 'admin_enqueue_scripts', [ $this, 'use_tailwind_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'add_material_icons' ] );
 		add_action( 'wp_head', [ $this, 'action_preload_styles' ] );
 		add_action( 'after_setup_theme', [ $this, 'action_add_editor_styles' ] );
@@ -363,12 +363,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			],
-			'wp-rig-sidebar'    => [
-				'file'             => 'sidebar.min.css',
-				'preload_callback' => function() {
-					return wp_rig()->is_primary_sidebar_active();
-				},
-			],
+			// 'wp-rig-sidebar'    => [
+			// 	'file'             => 'sidebar.min.css',
+			// 	'preload_callback' => function() {
+			// 		return wp_rig()->is_primary_sidebar_active();
+			// 	},
+			// ],
 			'wp-rig-widgets'    => [
 				'file'             => 'widgets.min.css',
 				'preload_callback' => function() {
@@ -440,7 +440,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		$google_fonts = [
 			'Noto Sans' => [ '400', '700' ],
-			'Roboto'    => [ '300', '400', '400i', '500', '700' ],
 			'Ubuntu'    => [ '300', '400', '400i', '500', '700' ],
 		];
 

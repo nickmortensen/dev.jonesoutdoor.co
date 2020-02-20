@@ -10,27 +10,21 @@ textarea {
 	color: var(--global-font-color);
 	font-family: var(--global-font-family);
 	line-height: var(--global-font-line-height);
+	font-weight: var(----light);
 }
 
-@media screen and ( width <= 525px ) {
-	body {
-		font-size: 8px;
-	}
+body {
+	font-size: var(--global-font-size);
 }
 
-@media screen and ( 525px <= width <= 799px ) {
-	body {
-		font-size: 10px;
-	}
-}
 
-@media screen and ( 800px <= width <= 1279px ) {
+@media screen and ( max-width: 800px ) {
 	body {
 		font-size: 16px;
 	}
 }
 
-@media screen and ( 1280px <= width ) {
+@media screen and ( min-width: 1280px ) {
 	body {
 		font-size: 18px;
 	}
@@ -45,7 +39,30 @@ h6 {
 	font-family: var(--highlight-font-family);
 	font-stretch: condensed;
 	clear: both;
+	font-weight: var(--bold);
+	line-height: var(--global-font-line-height);
 }
+
+h1 {
+	font-size: 2.2rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.8rem;
+}
+
+h4 {
+	font-size: 1.6rem;
+}
+
+h5 {
+	font-size: 1.2rem;
+}
+
 
 .entry-header h1.entry-title,
 .page-header .page-title {
@@ -130,4 +147,3 @@ ins {
 big {
 	font-size: 125%;
 }
-
